@@ -6,11 +6,7 @@ import pandas as pd
 from IPython.core.display import display, HTML
 import json
 
-# query = 'What collaborations are happening within 2019-nCoV research community'
-
-# searcher = pysearch.SimpleSearcher('lucene-index-covid-2020-03-27/')
-# hits = searcher.search(query + '. ' + keywords)
-N_HITS = 3
+N_HITS = 10
 KEYWORDS = 'inter-sectorial, international, collaboration, global, coronavirus, novel coronavirus, sharing'
 
 from transformers import DistilBertForQuestionAnswering, DistilBertTokenizer
@@ -68,7 +64,7 @@ def makeBERTSQuADPrediction(model, document, question):
     else:
         confidence = torch.max(start_scores) + torch.max(end_scores)
         confidence = np.log(confidence.item())
-        ans['confidence'] = confidence/(1.0+confidence)
+        ans['confidence'] = round(confidence/(1.0+confidence), 2)
     ans['start'] = answer_start
     ans['end'] = answer_end
     ans['abstract_bert'] = abs_returned

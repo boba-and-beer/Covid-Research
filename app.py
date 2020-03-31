@@ -11,12 +11,11 @@ app = Flask(__name__,static_folder='frontend')
 @app.route('/api/search') 
 def hello_world():
   text = request.args.get('text')
-  data = searchDatabase(question='Why so serious?')
+  data = searchDatabase(question=text)
   print(data)
   if len(data) == 0:
     return jsonify([
-        {"Source":"SomeSource","Text":"Faketext","Confidence":155}, 
-        {"Source":"SomeSource2", "Text": "Faketext2", "Confidence":323}
+        {"Source":"Unconfident About Any result","Text":"Unconfident About Any result","Confidence":0}, 
     ])
   else:
     return jsonify(data)
