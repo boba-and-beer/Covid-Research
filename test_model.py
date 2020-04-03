@@ -1,5 +1,7 @@
 import os
+# Set the java home environment to the actual java library
 os.environ["JAVA_HOME"] = "/usr/lib/jvm/jdk-11.0.2"
+
 from pyserini.search import pysearch
 
 import pandas as pd
@@ -7,6 +9,7 @@ from IPython.core.display import display, HTML
 import json
 
 N_HITS = 10
+# TODO: Analyse the hard-coded keywords and assess if anything needs to change here.
 KEYWORDS = 'inter-sectorial, international, collaboration, global, coronavirus, novel coronavirus, sharing'
 
 from transformers import DistilBertForQuestionAnswering, DistilBertTokenizer
@@ -251,8 +254,3 @@ def searchDatabase(question, keywords=KEYWORDS, pysearch=pysearch, lucene_databa
     # print(answers)
     ## display results in a nice format
     return displayResults(hit_dictionary, answers, question, displayTable=displayTable, displayHTML=displayHTML)
-
-
-print(searchDatabase(question="What is the new virus", 
-    keywords=KEYWORDS, pysearch=pysearch, lucene_database='lucene-index-covid-2020-03-27/', BERTSQuAD_Model=model, 
-    displayTable=True, displayHTML=False))

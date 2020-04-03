@@ -8,17 +8,33 @@ from test_model import searchDatabase, pysearch, KEYWORDS, model
 
 app = Flask(__name__,static_folder='frontend') 
 
-@app.route('/api/search') 
-def hello_world():
-  text = request.args.get('text')
+# Should the following include the methods='post' argumetn?
+def predict(text):
+  """Returns a dictionary item
+  """
   data = searchDatabase(question=text)
   print(data)
   if len(data) == 0:
-    return jsonify([
-        {"Source":"Unconfident About Any result","Text":"Unconfident About Any result","Confidence":0}, 
-    ])
+    return [
+        {"Source":"Unconfident About Any result","Text":"Unconfident About Any result","Confidence":0}
+    ]
   else:
-    return jsonify(data)
+    return data
+
+@app.route('/api/search') 
+def hello_world():
+  """Returns prediction
+  """
+  text = request.args.get('text')
+  return jsonify(predict(text))
+  # data = searchDatabase(question=text)
+  # print(data)
+  # if len(data) == 0:
+  #   return jsonify([
+  #       {"Source":"Unconfident About Any result","Text":"Unconfident About Any result","Confidence":0},
+  #   ])
+  # else:
+  #   return jsonify(data)
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')

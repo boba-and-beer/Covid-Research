@@ -21,3 +21,5 @@ lucene-index-covid-2020-03-20.tar.gz
 lucene-index-covid-2020-03-27/
 miniconda3/
 anserini/
+htmlFiles/
+__pycache__/
