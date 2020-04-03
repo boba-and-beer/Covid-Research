@@ -6,7 +6,7 @@ import os
 os.environ["JAVA_HOME"] = "/usr/lib/jvm/jdk-11.0.2"
 from test_model import searchDatabase, pysearch, KEYWORDS, model
 
-app = Flask(__name__,static_folder='frontend') 
+app = Flask(__name__,static_folder='frontend/covidsearch/build') 
 
 # Should the following include the methods='post' argumetn?
 def predict(text):
