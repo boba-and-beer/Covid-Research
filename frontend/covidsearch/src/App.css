@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+}
+
+.cvd-resulttable {
+  /* font-family: 'Times New Roman', Times, serif; */
+  max-width: 1200px;
+  padding: 50px;
+  margin: 0 auto 0 auto;
+}
+
+.cvd-resulttable th {
+  background-color: rgba(222, 223, 224, 0.3);
+  border: 1px solid rgba(222, 223, 224, 0.3);
+}
+.cvd-resulttable td {
+  border: 1px solid rgba(222, 223, 224, 0.3);
+}
+
+.cvd-searchbar {
+  display: flex;
+  flex: center;
+  align-items: center;
+  justify-content: center;
+}
+.cvd-searchbar input {
+  margin: 0px;
+}
+.cvd-searchbar button{
+  margin: 0px;
+  padding: 5px;
+}
