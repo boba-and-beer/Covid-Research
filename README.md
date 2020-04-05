@@ -9,3 +9,21 @@ We recommend people do their research before believing whatever is said on CNN/b
 
 This has been built on top of a lot of open-source software and could not have been done without it. 
 
+
+___
+### How to run frontend
+
+```
+cd frontend/covidsearch
+npm install
+npm run start
+```
+to Build and test with server:
+```
+npm run build
+```
+Ensure files are serving frontend/covidsearch/build
+
+
+
+
