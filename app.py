@@ -1,15 +1,15 @@
-from flask import (Flask, 
-      send_from_directory, 
-      jsonify, 
+from flask import (Flask,
+      send_from_directory,
+      jsonify,
       request)
 import os
 os.environ["JAVA_HOME"] = "/usr/lib/jvm/jdk-11.0.2"
-from test_model import searchDatabase, pysearch, KEYWORDS, model
+from inference import searchDatabase, pysearch, KEYWORDS, model
 
-app = Flask(__name__,static_folder='frontend/covidsearch/build') 
+app = Flask(__name__,static_folder='frontend/covidsearch/build')
 
 # Should the following include the methods='post' argumetn?
-def predict(text):
+def predict(text) -> list:
   """Returns a dictionary item.
   """
   data = searchDatabase(question=text)
@@ -22,7 +22,7 @@ def predict(text):
   else:
     return data
 
-@app.route('/api/search') 
+@app.route('/api/search')
 def hello_world():
   """Returns prediction for questions.
   """
@@ -37,5 +37,5 @@ def serve(path):
   else:
       return send_from_directory(app.static_folder, 'index.html')
 
-if __name__ == "__main__": 
-    app.run(host='0.0.0.0',debug=True) 
+if __name__ == "__main__":
+    app.run(host='0.0.0.0',debug=True)
