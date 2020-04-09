@@ -5,6 +5,7 @@ RUN apt-get update \
   && cd /usr/local/bin \  
   && ln -s /usr/bin/python3 python \  
   && pip3 install flask  
+  && pip3 install -r requirements.txt
   
 COPY . .
 ENTRYPOINT ["python3","app.py"]
