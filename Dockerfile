@@ -7,4 +7,4 @@ RUN apt-get update \
   && pip3 install flask  
   
 COPY . .
-ENTRYPOINT ["python3","echo.py"]
+ENTRYPOINT ["python3","app.py"]
