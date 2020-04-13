@@ -10,6 +10,16 @@ from tqdm import tqdm
 from transformers import DistilBertForQuestionAnswering, DistilBertTokenizer
 import numpy as np
 import torch
+from flask import Flask 
+from flask_restful import reqparse, abort, Api, Resource
+import pickle 
+import numpy as np 
+
+# argument parsing 
+app = Flask(__name__)
+api = Api(app)
+parser = reqparse.RequestParser()
+parser.add_argument('question')
 
 N_HITS = 10
 # TODO: Analyse the hard-coded keywords and assess if anything needs to change here.
@@ -18,8 +28,9 @@ KEYWORDS = ''
 LUCENE_DATABASE_PATH ='lucene-index-covid-2020-03-27'
 
 # Load these models locally - distilbert-base-uncased-distilled-squad
-model = DistilBertForQuestionAnswering.from_pretrained('/mnt/lucene-database/distilbert')
-tokenizer = DistilBertTokenizer.from_pretrained('/mnt/lucene-database/distilbert')
+DISTILBERT_MODEL_PATH = 'distilbert-base-uncased-distilled-squad'
+model = DistilBertForQuestionAnswering.from_pretrained(DISTILBERT_MODEL_PATH)
+tokenizer = DistilBertTokenizer.from_pretrained(DISTILBERT_MODEL_PATH)
 
 # document = "Victoria has a written constitution enacted in 1975, but based on the 1855 colonial constitution, passed by the United Kingdom Parliament as the Victoria Constitution Act 1855, which establishes the Parliament as the state's law-making body for matters coming under state responsibility. The Victorian Constitution can be amended by the Parliament of Victoria, except for certain 'entrenched' provisions that require either an absolute majority in both houses, a three-fifths majority in both houses, or the approval of the Victorian people in a referendum, depending on the provision."
 # input_ids = tokenizer.encode('Why is this strange thing here?')
@@ -245,3 +256,21 @@ def searchDatabase(question, keywords=KEYWORDS, pysearch=pysearch, lucene_databa
     # print(answers)
     ## display results in a nice format
     return displayResults(hit_dictionary, answers, question, displayTable=displayTable, displayHTML=displayHTML)
+
+
+class SearchDatabase(Resource):
+    """Returns a list of json files
+    """
+    def get(self):
+        # use parser and find the user's query
+        args = parser.parse_args()
+        question = args['question']
+        output = searchDatabase(question)
+        return output
+
+# Setup the Api resource routing here
+# Route the URL to the resource
+api.add_resource(SearchDatabase, '/')
+
+if __name__ == '__main__':
+    app.run(debug=True)
