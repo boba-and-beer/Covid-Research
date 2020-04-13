@@ -12,6 +12,7 @@ Cython==0.29.16
 decorator==4.4.2
 docutils==0.15.2
 filelock==3.0.12
+flask-restful==0.3.8
 Flask==1.1.1
 idna==2.8
 ipython-genutils==0.2.0
@@ -21,9 +22,6 @@ Jinja2==2.11.1
 jmespath==0.9.5
 joblib==0.14.1
 MarkupSafe==1.1.1
-# mkl-fft==1.0.15
-# mkl-random==1.1.0
-# mkl-service==2.3.0
 numpy==1.18.1
 olefile==0.46
 pandas==1.0.3
@@ -44,13 +42,11 @@ python-dateutil==2.8.1
 pytz==2019.3
 regex==2020.2.20
 requests==2.22.0
-ruamel-yaml==0.15.87
 s3transfer==0.3.3
 sacremoses==0.0.38
 sentencepiece==0.1.85
 six==1.14.0
 tokenizers==0.5.2
-torch==1.4.0
 tqdm==4.42.1
 traitlets==4.3.3
 transformers==2.6.0
