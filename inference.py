@@ -25,7 +25,7 @@ N_HITS = 10
 # TODO: Analyse the hard-coded keywords and assess if anything needs to change here.
 KEYWORDS = ''
 # LUCENE_DATABASE_DIR = '/mnt/lucene-database'
-LUCENE_DATABASE_PATH ='lucene-index-covid-2020-03-27'
+LUCENE_DATABASE_PATH ='lucene-index-covid-2020-04-10'
 
 # Load these models locally - distilbert-base-uncased-distilled-squad
 DISTILBERT_MODEL_PATH = 'distilbert-base-uncased-distilled-squad'
@@ -273,4 +273,4 @@ class SearchDatabase(Resource):
 api.add_resource(SearchDatabase, '/')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True, port=5001)
