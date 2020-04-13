@@ -1,4 +1,4 @@
-transformers
-pytorch
-flask
-flask-restful
+transformers==2.6.0
+flask-restful==0.3.8
+Flask==1.1.1
+torch==1.3.1
