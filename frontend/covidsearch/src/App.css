@@ -25,6 +25,7 @@
 }
 .cvd-searchbar input {
   margin: 0px;
+  width: 800px;
 }
 .cvd-searchbar button{
   margin: 0px;
