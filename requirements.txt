@@ -18,7 +18,7 @@ idna==2.8
 ipython-genutils==0.2.0
 itsdangerous==1.1.0
 jedi==0.16.0
-Jinja2==2.11.1
+Jinja2==2.11.3
 jmespath==0.9.5
 joblib==0.14.1
 MarkupSafe==1.1.1
