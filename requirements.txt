@@ -33,7 +33,7 @@ prompt-toolkit==3.0.4
 ptyprocess==0.6.0
 pycosat==0.6.3
 pycparser==2.19
-Pygments==2.6.1
+Pygments==2.7.4
 pyjnius==1.2.1
 pyOpenSSL==19.1.0
 pyserini==0.8.1.0
