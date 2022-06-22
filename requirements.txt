@@ -22,7 +22,7 @@ Jinja2==2.11.1
 jmespath==0.9.5
 joblib==0.14.1
 MarkupSafe==1.1.1
-numpy==1.18.1
+numpy==1.22.0
 olefile==0.46
 pandas==1.0.3
 parso==0.6.2
